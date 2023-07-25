@@ -65,7 +65,7 @@ DaoInterface dao=new DaoImpl();
 	        System.out.println("student record added successfully");
 	    }
 	    else {
-	        System.out.println("fail");
+	        System.out.println("failed to add student");
 	    }
 	}
 	
@@ -76,7 +76,7 @@ DaoInterface dao=new DaoImpl();
 		if(b)
 			System.out.println("Student deleted successfully");
 		else
-			System.out.println("Failed");
+			System.out.println("Failed to delete student");
 		
 	}
 	
@@ -97,7 +97,7 @@ DaoInterface dao=new DaoImpl();
 	    	System.out.println("Successfully updated");
 	    }
 	    else {
-	    	System.out.println("Failed to Update");
+	    	System.out.println("Failed to Update student details");
 	    }
 		
 	}
