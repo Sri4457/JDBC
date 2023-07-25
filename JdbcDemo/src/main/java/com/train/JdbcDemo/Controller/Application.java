@@ -30,6 +30,7 @@ DaoInterface dao=new DaoImpl();
 	    		app.deleteStudent();
 	    		break;
 	    	case 3:
+	    		app.updateStudent();
 	    		break;
 	    	case 4:
 	    		app.viewById();
@@ -47,7 +48,8 @@ DaoInterface dao=new DaoImpl();
 	    	}
 	    }
     }
-    private void addStudent() {
+    
+	private void addStudent() {
 		Student std=new Student();
 	    System.out.println("Enter sid");
 	    std.setSid(sc.nextInt());
@@ -75,6 +77,28 @@ DaoInterface dao=new DaoImpl();
 			System.out.println("Student deleted successfully");
 		else
 			System.out.println("Failed");
+		
+	}
+	
+	private void updateStudent() {
+		
+		Student std=new Student();
+	    System.out.println("Enter id of student to be updated");
+	    std.setSid(sc.nextInt());
+	    System.out.println("Enter student name to be updated");
+	    std.setSname(sc.next());
+	    System.out.println("Enter marks of student to be updated");
+	    std.setMarks(sc.nextInt());
+	    System.out.println("Enter city of student to be updated");
+	    std.setCity(sc.next());
+	    boolean b=dao.updateStudent(std);
+	    if(b)
+	    {
+	    	System.out.println("Successfully updated");
+	    }
+	    else {
+	    	System.out.println("Failed to Update");
+	    }
 		
 	}
 	

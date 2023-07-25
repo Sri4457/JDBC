@@ -64,11 +64,27 @@ public class DaoImpl implements DaoInterface {
 		return b;
 	}
 
-//	@Override
-//	public boolean updateStudent(Student std) {
-//		
-//		return false;
-//	}
+	@Override
+	public boolean updateStudent(Student std) {
+		boolean b=false;
+		try {
+			pstmt=con.prepareStatement("update student set name=?, marks=?, city=? where sid=?");
+			pstmt.setString(1, std.getSname());
+			pstmt.setInt(2, std.getMarks());
+			pstmt.setString(3, std.getCity());
+			pstmt.setInt(4,std.getSid());
+			int i=pstmt.executeUpdate();
+			if(i>0)
+			{
+				b=true;
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		return b;
+	}
 
 	@Override
 	public Student getStudentById(int sid) {
