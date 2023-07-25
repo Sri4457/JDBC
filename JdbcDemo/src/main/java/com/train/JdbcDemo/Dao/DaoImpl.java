@@ -64,11 +64,11 @@ public class DaoImpl implements DaoInterface {
 		return b;
 	}
 
-	@Override
-	public boolean updateStudent(Student std) {
-		
-		return false;
-	}
+//	@Override
+//	public boolean updateStudent(Student std) {
+//		
+//		return false;
+//	}
 
 	@Override
 	public Student getStudentById(int sid) {
