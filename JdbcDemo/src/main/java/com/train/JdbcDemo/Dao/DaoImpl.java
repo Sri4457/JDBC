@@ -12,7 +12,7 @@ import java.util.List;
 
 import com.train.JdbcDemo.Model.Student;
 public class DaoImpl implements DaoInterface {
-    Connection con=null;
+    public Connection con=null;
     PreparedStatement pstmt=null;
 
     public DaoImpl() {
@@ -67,12 +67,26 @@ public class DaoImpl implements DaoInterface {
 	@Override
 	public boolean updateStudent(Student std) {
 		boolean b=false;
-		try {
-			pstmt=con.prepareStatement("update student set name=?, marks=?, city=? where sid=?");
-			pstmt.setString(1, std.getSname());
-			pstmt.setInt(2, std.getMarks());
-			pstmt.setString(3, std.getCity());
-			pstmt.setInt(4,std.getSid());
+		Student std1=getStudentById(std.getSid());
+		try 
+		{
+			if(std.getSname()!=null)
+			{
+				std1.setSname(std.getSname());
+			}
+			if(std.getCity()!=null)
+			{
+				std1.setCity(std.getCity());
+			}
+			if(std.getMarks()!=0)
+			{
+				std1.setMarks(std.getMarks());
+			}
+			pstmt=con.prepareStatement("update student set name=?,marks=?,city=? where sid=?");
+			pstmt.setString(1, std1.getSname());
+			pstmt.setInt(2, std1.getMarks());
+			pstmt.setString(3, std1.getCity());
+			pstmt.setInt(4,std1.getSid());
 			int i=pstmt.executeUpdate();
 			if(i>0)
 			{
@@ -129,6 +143,17 @@ public class DaoImpl implements DaoInterface {
 		}
 		
 		return list;
+	}
+	
+	public void clear()
+	{
+		try 
+		{
+			con.close();
+		} 
+		catch (SQLException e) {
+			System.out.println(e);
+		}
 	}
 	
 }

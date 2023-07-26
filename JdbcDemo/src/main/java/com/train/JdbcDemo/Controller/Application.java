@@ -61,7 +61,8 @@ DaoInterface dao=new DaoImpl();
 	    System.out.println("Enter sid");
 	    std.setSid(sc.nextInt());
 	    System.out.println("Enter student name");
-	    std.setSname(sc.next());
+	    std.setSname(sc.nextLine());
+	    sc.nextLine();
 	    System.out.println("Enter marks ");
 	    std.setMarks(sc.nextInt());
 	    System.out.println("Enter city");
@@ -92,12 +93,43 @@ DaoInterface dao=new DaoImpl();
 		Student std=new Student();
 	    System.out.println("Enter id of student to be updated");
 	    std.setSid(sc.nextInt());
-	    System.out.println("Enter student name to be updated");
-	    std.setSname(sc.next());
-	    System.out.println("Enter marks of student to be updated");
-	    std.setMarks(sc.nextInt());
-	    System.out.println("Enter city of student to be updated");
-	    std.setCity(sc.next());
+	    boolean flag_name=false,flag_marks=false,flag_city=false;
+	    while(true)
+	    {
+	    	if(flag_name==false)
+	    		System.out.println("Enter *'name'* to Change Student Name to Be Updated");
+	    	if(flag_marks==false)
+	    		System.out.println("Enter *'marks'* to Change student marks to be updated");
+	    	if(flag_city==false)
+	    		System.out.println("Enter *'city'* Change student city to be updated");
+	    	System.out.println("Enter *'exit'* to done with the changes");
+	    	String option=sc.next();
+	    	if(option.equalsIgnoreCase("name"))
+	    	{
+	    		sc.nextLine();
+	    		System.out.println("Enter name");
+	    		std.setSname(sc.nextLine());
+	    		flag_name=true;
+	    	}
+	    	if(option.equalsIgnoreCase("marks"))
+	    	{
+	    		sc.nextLine();
+	    		System.out.println("Enter marks of student to be updated");
+			    std.setMarks(sc.nextInt());
+	    		flag_marks=true;
+	    	}
+	    	if(option.equalsIgnoreCase("city"))
+	    	{
+	    		System.out.println("Enter city of student to be updated");
+			    std.setCity(sc.next());
+	    		flag_city=true;
+	    	}
+		    if(option.equalsIgnoreCase("exit"))
+		    {
+		    	System.out.println("Updation done");
+		    	break;
+		    }
+	    }
 	    boolean b=dao.updateStudent(std);
 	    if(b)
 	    {
