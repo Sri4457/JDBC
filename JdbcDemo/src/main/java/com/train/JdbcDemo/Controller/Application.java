@@ -154,9 +154,13 @@ DaoInterface dao=new DaoImpl();
 	
 	private void viewAllStudents() {
 		List<Student> list=dao.viewAllStudents();
+		if(list.size()==0)
+			System.out.println("No records in database");
+		else {
 		for(int i=0;i<list.size();i++)
-		{
-			System.out.println("The Student id : "+list.get(i).getSid()+" The name of student is  : "+list.get(i).getSname()+" the city is : "+list.get(i).getCity()+" and the student with marks : "+list.get(i).getMarks());
+			{
+				System.out.println("The Student id : "+list.get(i).getSid()+" The name of student is  : "+list.get(i).getSname()+" the city is : "+list.get(i).getCity()+" and the student with marks : "+list.get(i).getMarks());
+			}
 		}
 		
 	}
