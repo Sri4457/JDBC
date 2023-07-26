@@ -88,13 +88,14 @@ public class DaoImpl implements DaoInterface {
 
 	@Override
 	public Student getStudentById(int sid) {
-		Student s=new Student();
+		Student s=null;
 		try {
 			pstmt=con.prepareStatement("select * from student where sid=?");
 			pstmt.setInt(1, sid);
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next())
 			{
+				s=new Student();
 				s.setCity(rs.getString("city"));
 				s.setSname(rs.getString("name"));
 				s.setSid(sid);
@@ -129,5 +130,5 @@ public class DaoImpl implements DaoInterface {
 		
 		return list;
 	}
-
+	
 }

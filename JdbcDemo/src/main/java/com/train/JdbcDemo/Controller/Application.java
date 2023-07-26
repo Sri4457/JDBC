@@ -13,40 +13,47 @@ DaoInterface dao=new DaoImpl();
 	
     public static void main(String[] args) {
 	    Application app=new Application();
-	    while(true){
-	    	System.out.println("1. Add Student");
-	    	System.out.println("2. Delete Student");
-	    	System.out.println("3. Update Student");
-	    	System.out.println("4. Get By id");
-	    	System.out.println("5. View All students");
-	    	System.out.println("6. Exit");
-	    	int option=app.sc.nextInt();
-	    	switch(option)
-	    	{
-	    	case 1:
-	    		app.addStudent();
-	    		break;
-	    	case 2:
-	    		app.deleteStudent();
-	    		break;
-	    	case 3:
-	    		app.updateStudent();
-	    		break;
-	    	case 4:
-	    		app.viewById();
-	    		break;
-	    	case 5:
-	    		app.viewAllStudents();
-	    		break;
-	    	case 6:
-	    		System.out.println("Thank you for using");
-	    		break;
-	    	}
-	    	if(option ==6)
-	    	{
-	    		break;
-	    	}
+	    boolean flag=true;
+	    while(flag){
+	    	flag=app.choices();
 	    }
+    }
+    
+    private boolean choices() {
+    	boolean flag=true;
+    	System.out.println("1. Add Student");
+    	System.out.println("2. Delete Student");
+    	System.out.println("3. Update Student");
+    	System.out.println("4. Get By id");
+    	System.out.println("5. View All students");
+    	System.out.println("6. Exit");
+    	int option=sc.nextInt();
+    	switch(option)
+    	{
+    	case 1:
+    		addStudent();
+    		break;
+    	case 2:
+    		deleteStudent();
+    		break;
+    	case 3:
+    		updateStudent();
+    		break;
+    	case 4:
+    		viewById();
+    		break;
+    	case 5:
+    		viewAllStudents();
+    		break;
+    	case 6:
+    		System.out.println("Thank you for using");
+    		break;
+    	}
+    	if(option ==6)
+    	{
+    		flag=false;
+    	}
+    	return flag;
     }
     
 	private void addStudent() {
@@ -106,6 +113,9 @@ DaoInterface dao=new DaoImpl();
 		System.out.println("Enter Id to get Details");
 		int id=sc.nextInt();
 		Student s=dao.getStudentById(id);
+		if(s==null)
+			System.out.println("No Record");
+		else
 		System.out.println("The Student id : "+s.getSid()+" The name of student is  : "+s.getSname()+" the city is : "+s.getCity()+" and the student with marks : "+s.getMarks());
 		
 	}
