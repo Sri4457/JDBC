@@ -1,0 +1,33 @@
+@charset "ISO-8859-1";
+body{
+		font-weight: bold;
+	}
+	.container{
+		margin-left: 25%;
+		padding:2.5%;
+		width:50%;
+		height:100%;
+		background-color: pink;
+	}
+	label{
+		margin-left: 0.5%;
+	}
+	input[type="text"],input[type="mobile"]{
+		margin: 0.5%;
+		width:95%;
+		border-style: solid;
+		border-radius: 25px;
+		padding:8px;
+	}
+	input[type="submit"]{
+		padding:1%;
+		width:15%;
+		font-weight: bold;
+		background-color: greenyellow;
+		border-radius: 20px;
+		margin:5%;
+	}
+		.con{
+		margin:15%;
+	}
+	

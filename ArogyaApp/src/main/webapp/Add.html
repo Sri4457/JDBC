@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Inserting Patient</title>
+<link rel="stylesheet" href="common.css">
+</head>
+<body>
+	<div class="container">
+		<center><h3>Add Patient</h3></center>
+		<form name="add" action="add" method="post">
+			<p><label>Enter You Name:</label><br><input type="text" name="name" placeholder="Enter your Name" required></p>
+			<p><label>Enter Aadhar Card:<br></label><input type="text" name="aadhar_card_number" placeholder="Enter 10 digit aadhar_card_number" required></p>
+			<p><label>Contact Mobile : </label><br><input type="mobile" name="contact_number" placeholder="Enter Contact Number">
+			<p><label>Gender : </label><input type=radio name="gender" value="male" required>Male
+            <input type=radio name="gender" value="female">Female</p>
+            <p><label>Enter Age of Patient:</label><br><input type="text" name="age" placeholder="Enter Age" required></p>
+            <p><label>Enter Address: </label><br><input type="text" name="address" placeholder="Enyter your Address" required></p>
+			<p><label>Enter City: </label><br><input type="text" name="city" placeholder="Enyter your City" required></p>
+			<p><label>Enter Guardian Name:</label><br><input type="text" name="guardian_name" placeholder="Enter Guardian Name" required></p>
+			<p><label>Enter Guardian address:</label><br><input type="text" name="guardian_address" placeholder="Enter Guardian Address" required></p>
+			<p><label>Enter Guardian Contact Number:</label><br><input type="mobile" name="guardian_contact_number"placeholder="Enter Guardian Mobile Number" required></p>
+			<center><input type="submit" value="Register"></center>
+		</form>
+	</div>
+	
+</body>
+</html>
