@@ -2,7 +2,9 @@ package com.abc.Controller.Admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +16,7 @@ import com.abc.Dao.AarogyaMethodsImple;
 import com.abc.Dao.CheckingParameters;
 import com.abc.Model.Patient;
 
-@WebServlet(urlPatterns={"/add","/update","/delete"})
+@WebServlet(urlPatterns={"/add","/update","/delete","/view_all","/view_by_age","/city"})
 public class AdminController extends HttpServlet{
 
 	AarogyaMethods dao=new AarogyaMethodsImple();
@@ -24,9 +26,13 @@ public class AdminController extends HttpServlet{
 			throws ServletException,IOException
 	{
 		String path=request.getServletPath();
-		System.out.println(path);
+//		System.out.println(path);
 		PrintWriter out=response.getWriter();
-		switch(path) {
+		RequestDispatcher rd=request.getRequestDispatcher("view.jsp");
+		ArrayList<Patient> list=new ArrayList<>();
+
+		switch(path) 
+		{
 		case "/add":
 			Patient p=new Patient();
 			p.setName(request.getParameter("name"));
@@ -85,7 +91,6 @@ public class AdminController extends HttpServlet{
 			}
 			break;
 		case "/update":
-			
 			String acn=request.getParameter("aadhar_card_number");
 			if(dao.markRecoverMember(acn))
 			{
@@ -102,11 +107,39 @@ public class AdminController extends HttpServlet{
 				out.println("</script>");
 			}
 			break;
+		case "/view_by_age":
+			list=dao.viewByAge(Integer.parseInt(request.getParameter("age1")), Integer.parseInt(request.getParameter("age2")));
+			if(list.size()==0)
+				request.setAttribute("reply","No Records are avaliable in the specific Age Range");
+			else
+				request.setAttribute("patient_list", list);
+			rd.include(request,response);
+			break;
+		case "/city":
+			list=dao.viewByCity(request.getParameter("city"));
+			if(list.size()==0)
+				request.setAttribute("reply","No Records are avaliable in the specific Age Range");
+			else
+				request.setAttribute("patient_list", list);
+			rd.include(request,response);
 		}
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		doPut(request,response);
+		String path=request.getServletPath();
+		RequestDispatcher rd=request.getRequestDispatcher("view.jsp");
+		ArrayList<Patient> list=new ArrayList<>();
+		switch(path)
+		{
+		case "/view_all":
+			list=dao.viewAllMembers();
+			if(list.size()==0)
+				request.setAttribute("reply","No Records are avaliable in the specific Age Range");
+			else
+				request.setAttribute("patient_list", list);
+			rd.include(request,response);
+			break;
+		}
 	}
 }
