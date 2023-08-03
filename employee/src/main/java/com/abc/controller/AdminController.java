@@ -26,7 +26,6 @@ public class AdminController extends HttpServlet{
 		PrintWriter out=response.getWriter();
 		Employee e=new Employee();
 		
-		RequestDispatcher rd=request.getRequestDispatcher("view.jsp");
 		switch(path)
 		{
 		case "/registration":
@@ -98,6 +97,14 @@ public class AdminController extends HttpServlet{
 				   out.println("</script>");
 			}
 			break;
+		}
+	}
+	public void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException
+	{
+		String path=request.getServletPath();
+		DaoInterface dao=new DaoImple();
+		RequestDispatcher rd=request.getRequestDispatcher("view.jsp");
+		switch(path) {
 		case "/view_all":
 			ArrayList<Employee> list=dao.viewAllEmployeess();
 			System.out.println(list);
@@ -108,9 +115,5 @@ public class AdminController extends HttpServlet{
 			rd.include(request,response);
 			break;
 		}
-	}
-	public void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException
-	{
-		doPost(request,response);
 	}
 }

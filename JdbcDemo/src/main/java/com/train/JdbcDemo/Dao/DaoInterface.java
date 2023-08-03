@@ -12,7 +12,9 @@ public interface DaoInterface {
     public boolean updateStudent(Student std);
     public Student getStudentById(int sid);
     public List<Student> viewAllStudents();
-
+    public List<Student> viewAllStudentsByName();
+    public List<Student> viewStudentsInMarksAndCity(int m1,int m2,String city);
+    public List<Student> viewStudentsOrderByMarks();
 }
 
  

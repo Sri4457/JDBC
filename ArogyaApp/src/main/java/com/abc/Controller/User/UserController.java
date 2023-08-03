@@ -33,7 +33,7 @@ public class UserController extends HttpServlet{
 				if(list.size()==0)
 					request.setAttribute("reply","No Records are avaliable in the specific Age Range");
 				else
-					request.setAttribute("emp_all", list);
+					request.setAttribute("patient_list", list);
 				rd.include(request,response);
 				break;
 			case "/view_by_acn":
@@ -41,7 +41,7 @@ public class UserController extends HttpServlet{
 				if(rs==null)
 					request.setAttribute("reply","No Records are avaliable with the specific Aadhar Card Number");
 				else
-					request.setAttribute("emp", rs);
+					request.setAttribute("patient_list", rs);
 				rd.include(request,response);
 				break;
 			case "/view_by_age":
@@ -49,7 +49,7 @@ public class UserController extends HttpServlet{
 				if(list.size()==0)
 					request.setAttribute("reply","No Records are avaliable in the specific Age Range");
 				else
-					request.setAttribute("emp_all", list);
+					request.setAttribute("patient_list", list);
 				rd.include(request,response);
 				break;
 			case "/view_by_city":
@@ -57,7 +57,7 @@ public class UserController extends HttpServlet{
 				if(list.size()==0)
 					request.setAttribute("reply","No Records are avaliable in the specific City");
 				else
-					request.setAttribute("emp_all", list);
+					request.setAttribute("patient_list", list);
 				rd.include(request,response);
 				break;
 		}

@@ -155,5 +155,74 @@ public class DaoImpl implements DaoInterface {
 			System.out.println(e);
 		}
 	}
+
+	@Override
+	public List<Student> viewAllStudentsByName() {
+		List<Student> list=new ArrayList<>();
+		try {
+			pstmt=con.prepareStatement("select * from student order by name asc");
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				Student s=new Student();
+				s.setCity(rs.getString("city"));
+				s.setSname(rs.getString("name"));
+				s.setSid(rs.getInt("sid"));
+				s.setMarks(rs.getInt("marks"));
+				list.add(s);
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		
+		return list;
+	}
+
+	@Override
+	public List<Student> viewStudentsInMarksAndCity(int m1, int m2,String city) {
+		List<Student> list=new ArrayList<>();
+		try {
+			pstmt=con.prepareStatement("select * from student where marks between ? and ? and city=?");
+			pstmt.setInt(1, m1);
+			pstmt.setInt(2, m2);
+			pstmt.setString(3, city);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				Student s=new Student();
+				s.setCity(rs.getString("city"));
+				s.setSname(rs.getString("name"));
+				s.setSid(rs.getInt("sid"));
+				s.setMarks(rs.getInt("marks"));
+				list.add(s);
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		
+		return list;
+	}
+
+	@Override
+	public List<Student> viewStudentsOrderByMarks() {
+		List<Student> list=new ArrayList<>();
+		try {
+			pstmt=con.prepareStatement("select * from student ORDER BY marks desc");
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				Student s=new Student();
+				s.setCity(rs.getString("city"));
+				s.setSname(rs.getString("name"));
+				s.setSid(rs.getInt("sid"));
+				s.setMarks(rs.getInt("marks"));
+				list.add(s);
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		
+		return list;
+	}
 	
 }

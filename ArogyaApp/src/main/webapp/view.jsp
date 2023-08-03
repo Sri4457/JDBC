@@ -17,7 +17,7 @@ background-color:pink;
 <body>
 <%
 Patient rs=(Patient)request.getAttribute("emp");
-ArrayList<Patient> list=(ArrayList<Patient>)request.getAttribute("emp_all");
+ArrayList<Patient> list=(ArrayList<Patient>)request.getAttribute("patient_list");
 String msg=(String)request.getAttribute("reply");
 %>
 <%

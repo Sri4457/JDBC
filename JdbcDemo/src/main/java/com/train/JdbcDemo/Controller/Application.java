@@ -26,7 +26,10 @@ DaoInterface dao=new DaoImpl();
     	System.out.println("3. Update Student");
     	System.out.println("4. Get By id");
     	System.out.println("5. View All students");
-    	System.out.println("6. Exit");
+    	System.out.println("6. View Students Order By name");
+    	System.out.println("7. Select Students based city and marks range");
+    	System.out.println("8. View Students Order By Marks;");
+    	System.out.println("9. Exit");
     	int option=sc.nextInt();
     	switch(option)
     	{
@@ -46,16 +49,26 @@ DaoInterface dao=new DaoImpl();
     		viewAllStudents();
     		break;
     	case 6:
+    		viewAllStudentsByName();
+    		break;
+    	case 7:
+    		viewStudentsByCityMarksRange();
+    		break;
+    	case 8:
+    		viewStudentsByMarks();
+    		break;
+    	case 9:
     		System.out.println("Thank you for using");
     		break;
     	}
-    	if(option ==6)
+    	if(option ==9)
     	{
     		flag=false;
     	}
     	return flag;
     }
     
+	
 	private void addStudent() {
 		Student std=new Student();
 	    System.out.println("Enter sid");
@@ -151,7 +164,6 @@ DaoInterface dao=new DaoImpl();
 		System.out.println("The Student id : "+s.getSid()+" The name of student is  : "+s.getSname()+" the city is : "+s.getCity()+" and the student with marks : "+s.getMarks());
 		
 	}
-	
 	private void viewAllStudents() {
 		List<Student> list=dao.viewAllStudents();
 		if(list.size()==0)
@@ -164,5 +176,52 @@ DaoInterface dao=new DaoImpl();
 		}
 		
 	}
+	
+	private void viewAllStudentsByName() {
+		List<Student> list=dao.viewAllStudentsByName();
+		if(list.size()==0)
+			System.out.println("No records in database");
+		else {
+		for(int i=0;i<list.size();i++)
+			{
+				System.out.println("The Student id : "+list.get(i).getSid()+" The name of student is  : "+list.get(i).getSname()+" the city is : "+list.get(i).getCity()+" and the student with marks : "+list.get(i).getMarks());
+			}
+		}
+		
+	}
+	private void viewStudentsByMarks() {
+		List<Student> list=dao.viewStudentsOrderByMarks();
+		if(list.size()==0)
+			System.out.println("No records in database");
+		else {
+		for(int i=0;i<list.size();i++)
+			{
+				System.out.println("The Student id : "+list.get(i).getSid()+" The name of student is  : "+list.get(i).getSname()+" the city is : "+list.get(i).getCity()+" and the student with marks : "+list.get(i).getMarks());
+			}
+		}
+		
+		
+	}
+
+	private void viewStudentsByCityMarksRange() {
+		System.out.println("Enter the City");
+		String city=sc.next();
+		System.out.println("Enter the starting marks");
+		int m1=sc.nextInt();
+		System.out.println("Enter the ending marks");
+		int m2=sc.nextInt();
+		List<Student> list=dao.viewStudentsInMarksAndCity(m1, m2, city);
+		if(list.size()==0)
+			System.out.println("No records in database");
+		else {
+		for(int i=0;i<list.size();i++)
+			{
+				System.out.println("The Student id : "+list.get(i).getSid()+" The name of student is  : "+list.get(i).getSname()+" the city is : "+list.get(i).getCity()+" and the student with marks : "+list.get(i).getMarks());
+			}
+		}
+		
+		
+	}
+
 
 }
