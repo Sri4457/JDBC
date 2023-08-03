@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="common.css">
+        <title>Add Employee</title>
+    </head>
+    
+    <body>
+            <div class="container">
+                <form action="registration" method="post">
+					<center><label>Adding Employee</label></center>
+                        <label>First Name:</label>
+                        <input class="input" name="fname" type="text" id="firstName" placeholder="Enter your first name" required/> 
+                        <label>Last Name:</label>
+                        <input class="input" type="text" id="lastName" name="lname" placeholder="Enter your last name" required/>
+                        <label>Mobile:</label>
+                        <input class="input" type="mobile" id="mobile" name="mobile" placeholder="only 10 digits allowed" required/>
+                        <label>Gender: </label>
+                        <div class="check">
+                            <input type="radio" name="gender" value="male"/>
+                            <label>Male</label>
+                            <input type="radio" name="gender"value="female"/>
+                            <label>Female</label>
+                            <input type="radio" name="gender" value="others"/>
+                            <label>Other</label>
+                        </div>
+                        <label>Email: </label>
+                        <input type="email" class="input" name="email" placeholder="Enter Your Email Id" required>
+                        <label>Date of Birth: </label>
+                        <input type="date" class="input" name="dob" placeholder="Enter Your DOB" required>
+                        <label>Address: </label>
+                        <input type="text" class="input" name="address" placeholder="Enter the address" required>
+                        <label>Salary: </label>
+                        <input type="text"class="input" name="salary" placeholder="Enter the Salary">
+                        <label>Password:</label>
+                        <input class="input" type="password" id="password" name="password" required/>
+                        
+                        <input class="submit" name="signup" type="submit" />
+                    </form>
+         
+            </div>
+    </body>
+</html>

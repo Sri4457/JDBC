@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="common.css">
+        <title>Update Employee</title>
+    </head>
+    
+    <body>
+		
+            <div class="container">
+				<center><h3>Update Employee</h3></center>
+                    <form action="update" method="post">
+						<center><label>Updating Employee</label></center>
+                        <label>First Name:</label>
+                        <input class="input" name="fname" type="text" id="firstName" placeholder="Enter your first name to update"/> 
+                        <label>Last Name:</label>
+                        
+                       	<input class="input" type="text" id="lastName" name="lname" placeholder="Enter your last name to update"/>
+                        <label>Email: </label>
+                        <input type="email" class="input" name="email" placeholder="Enter Email to update">
+                        <label>Mobile:</label>
+                        <input class="input"  class="input"type="mobile" id="mobile" name="mobile" placeholder="only 10 digits allowed  to update"/>
+                        <label>Date of Birth: </label>
+                        <input type="date" class="input" name="dob" placeholder="Enter Your DOB" required>
+                        <label>Address: </label>
+                        <input type="text"  class="input"name="address" placeholder="Enter the address to update" >
+                        <label>Salary: </label>
+                        <input type="text"  class="input"name="salary" placeholder="Enter the Salary to update">
+                        <label>Password:</label>
+                        <input class="input" type="password" id="password" name="password" />
+                        
+                        <input class="submit" name="signup" type="submit" />
+                    </form>
+            </div>
+    </body>
+</html>
