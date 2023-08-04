@@ -58,9 +58,20 @@ public class DaoImpl implements DaoInterface{
 	public List<Employee> getByCity(String city) {
 		Session session=sf.openSession();
 		Query q=session.createQuery("from Employee where city= :city_name");
-		q.setParameter("city_name", city);
+		q.setParameter("city_name", city.toLowerCase());
 		List<Employee> el=q.getResultList();
 		return el;
+	}
+
+	@Override
+	public List<Employee> getSalRange(double a, double b) {
+		Session s=sf.openSession();
+		Query q=s.createQuery("from Employee where salary>= :salary_1 and salary<= :salary_2");
+		q.setParameter("salary_1", a);
+		q.setParameter("salary_2", b);
+		List<Employee> l=q.getResultList();
+		s.close();
+		return l;
 	}
 
 }

@@ -24,7 +24,7 @@ public class App
         System.out.println("Enter Name");
         e.setEname(sc.next());
         System.out.println("Enter City");
-        e.setCity(sc.next());
+        e.setCity(sc.next().toLowerCase());
         System.out.println("Enter Email");
         e.setEmail(sc.next());
         System.out.println("Enter salary");
@@ -70,7 +70,8 @@ public class App
         	System.out.println("3. View Employee");
         	System.out.println("4. View all Employees");
         	System.out.println("5. view by city");
-        	System.out.println("6. Exit");
+        	System.out.println("6. View in Salary Range");
+        	System.out.println("7. Exit");
         	int option=obj.sc.nextInt();
         	switch(option)
         	{
@@ -88,12 +89,32 @@ public class App
         		break;
         	case 5:
         		obj.viewByCity();
+        		break;
         	case 6:
+        		obj.viewBySalRange();
+        		break;
+        	case 7:
         		b=false;
         		System.out.println("Thank You");
         	}
         }
     }
+	private void viewBySalRange() {
+		System.out.println("Enter the starting salary");
+		double a=sc.nextDouble();
+		System.out.println("Enter the Ending salary");
+		double b=sc.nextDouble();
+		List<Employee> list=dao.getSalRange(a, b);
+		for(Employee e:list)
+    	{
+    		System.out.println("Employee id : "+e.getId());
+        	System.out.println("Employee Name : "+e.getEname());
+        	System.out.println("Employee City : "+e.getCity());
+        	System.out.println("Emloyee Email : "+e.getEmail());
+        	System.out.println("Employee Salary : "+e.getSalary());
+        	System.out.println("====================================");
+    	}
+	}
 	public void viewByCity() {
 		System.out.println("Enter city Name");
 		String city=sc.next();
