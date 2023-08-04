@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import com.abc.HibernateDemo.Model.Employee;
 
@@ -50,6 +51,15 @@ public class DaoImpl implements DaoInterface{
 		Session session=sf.openSession();
 		List<Employee> el=session.createQuery("from Employee", Employee.class).getResultList();
 		session.close();
+		return el;
+	}
+
+	@Override
+	public List<Employee> getByCity(String city) {
+		Session session=sf.openSession();
+		Query q=session.createQuery("from Employee where city= :city_name");
+		q.setParameter("city_name", city);
+		List<Employee> el=q.getResultList();
 		return el;
 	}
 

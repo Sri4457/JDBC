@@ -10,4 +10,5 @@ public interface DaoInterface {
 	void deleteEmp(int i);
 	Employee getEmployeeById(int i);
 	List<Employee> viewAllEmp();
+	List<Employee> getByCity(String city);
 }

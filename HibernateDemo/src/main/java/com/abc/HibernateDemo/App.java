@@ -69,7 +69,8 @@ public class App
         	System.out.println("2. Delete Employee");
         	System.out.println("3. View Employee");
         	System.out.println("4. View all Employees");
-        	System.out.println("5. Exit");
+        	System.out.println("5. view by city");
+        	System.out.println("6. Exit");
         	int option=obj.sc.nextInt();
         	switch(option)
         	{
@@ -86,9 +87,25 @@ public class App
         		obj.viewAllEmployees();
         		break;
         	case 5:
+        		obj.viewByCity();
+        	case 6:
         		b=false;
         		System.out.println("Thank You");
         	}
         }
     }
+	public void viewByCity() {
+		System.out.println("Enter city Name");
+		String city=sc.next();
+		List<Employee> list=dao.getByCity(city);
+    	for(Employee e:list)
+    	{
+    		System.out.println("Employee id : "+e.getId());
+        	System.out.println("Employee Name : "+e.getEname());
+        	System.out.println("Employee City : "+e.getCity());
+        	System.out.println("Emloyee Email : "+e.getEmail());
+        	System.out.println("Employee Salary : "+e.getSalary());
+        	System.out.println("====================================");
+    	}
+	}
 }
