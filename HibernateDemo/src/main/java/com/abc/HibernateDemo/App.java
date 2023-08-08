@@ -71,7 +71,8 @@ public class App
         	System.out.println("4. View all Employees");
         	System.out.println("5. view by city");
         	System.out.println("6. View in Salary Range");
-        	System.out.println("7. Exit");
+        	System.out.println("7. Update Employee");
+        	System.out.println("8. Exit");
         	int option=obj.sc.nextInt();
         	switch(option)
         	{
@@ -94,11 +95,67 @@ public class App
         		obj.viewBySalRange();
         		break;
         	case 7:
+        		obj.updateEmployee();
+        		break;
+        	case 8:
         		b=false;
         		System.out.println("Thank You");
         	}
         }
     }
+	private void updateEmployee() {
+		System.out.println("Enter Id");
+		Employee e=new Employee();
+		e.setId(sc.nextInt());
+		boolean flag_name=false,flag_city=false,flag_email=false,flag_sal=false;
+		while(true)
+		{
+			if(!flag_name)
+				System.out.println("Enter **name** to change the Name");
+			if(!flag_city)
+				System.out.println("Enter **city** to change the City");
+			if(!flag_email)
+				System.out.println("Enter **email** to change the Email");
+			if(!flag_sal)
+				System.out.println("Enter **salary** to change the Salary");
+			System.out.println("Enter **exit** to Exit Update function");
+			String opt=sc.next();
+			if(opt.equalsIgnoreCase("name"))
+			{
+				flag_name=true;
+				System.out.println("Enter Name");
+				e.setEname(sc.next());
+			}
+			else if(opt.equalsIgnoreCase("city"))
+			{
+				flag_city=true;
+				System.out.println("Enter City");
+				e.setCity(sc.next());
+			}
+			else if(opt.equalsIgnoreCase("email"))
+			{
+				flag_email=true;
+				System.out.println("Enter Email");
+				e.setEmail(sc.next());
+			}
+			else if(opt.equalsIgnoreCase("salary"))
+			{
+				flag_sal=true;
+				System.out.println("Enter Salary");
+				e.setSalary(sc.nextDouble());
+			}
+			else if(opt.equalsIgnoreCase("exit"))
+			{
+				break;
+			}
+		}
+		boolean b=dao.updateEmployee(e);
+		if(b)
+			System.out.println("Updation done");
+		else
+			System.out.println("Something went wrong");
+		
+	}
 	private void viewBySalRange() {
 		System.out.println("Enter the starting salary");
 		double a=sc.nextDouble();

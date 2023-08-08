@@ -74,4 +74,38 @@ public class DaoImpl implements DaoInterface{
 		return l;
 	}
 
+	@Override
+	public boolean updateEmployee(Employee e) {
+		boolean b=false;
+		try
+		{
+			Employee emp=getEmployeeById(e.getId());
+			if(e.getCity()!=null)
+				emp.setCity(e.getCity());
+			if(e.getEname()!=null)
+				emp.setEname(e.getEname());
+			if(e.getEmail()!=null)
+				emp.setEmail(e.getEmail());
+			if(e.getSalary()!=0)
+				emp.setSalary(e.getSalary());
+			Session s=sf.openSession();
+			Transaction tnx=s.beginTransaction();
+			Query q=s.createQuery("update Employee set ename= :ename,city=: city,email=: email,salary=: salary where id=: id");
+			q.setParameter("ename", emp.getEname());
+			q.setParameter("city", emp.getCity());
+			q.setParameter("email", emp.getEmail());
+			q.setParameter("salary", emp.getSalary());
+			q.setParameter("id", emp.getId());
+			int i=q.executeUpdate();
+			if(i>0)
+				b=true;
+		}
+		catch(Exception e1)
+		{
+			System.out.println(e1);
+		}
+		return b;
+		
+	}
+
 }

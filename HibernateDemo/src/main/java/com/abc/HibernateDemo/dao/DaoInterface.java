@@ -12,6 +12,6 @@ public interface DaoInterface {
 	List<Employee> viewAllEmp();
 	List<Employee> getByCity(String city);
 	List<Employee> getSalRange(double a, double b);
-	void updateEmployee(Employee e);
+	boolean updateEmployee(Employee e);
 	
 }
