@@ -56,7 +56,7 @@ public class App
         	System.out.println("Employee City : "+e.getCity());
         	System.out.println("Emloyee Email : "+e.getEmail());
         	System.out.println("Employee Salary : "+e.getSalary());
-        	System.out.println("====================================");
+        	System.out.println("=================================");
     	}
     }
     public static void main( String[] args )
