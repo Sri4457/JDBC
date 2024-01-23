@@ -23,6 +23,7 @@ public class DaoImple implements DaoInterface
 	}
 	private java.sql.Date getCurrentDate() {
 	    java.util.Date today = new java.util.Date();
+		System.out.pritnln("hello");//just for testing
 	    return new java.sql.Date(today.getTime());
 	}
 
