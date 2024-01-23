@@ -1,0 +1,12 @@
+Spring Eureka allows microservices to register themselves and discover other microservices for any communication.
+
+Spring Zuul is a API gateway which handles requests and filtering for microservices the main function of Zuul is that route incoming requests to the appropiate microservices based on defined routing configuration.
+
+Spring Ribbon is client side load balancer it distributes the requests to different instances of a service registered with eureka.
+
+
+Hi My name is Srihitha. I have around 4 years experience where I have handson experience on the various aspects of software developement like analysis, desinging, implementing and deploying. I have a handson experience in some technologies and frameworks relate to full stack development like reactjs, angularjs, html,css, spring boot, building spring microservices using spring eureka, spring Zuul and spring ribbon. I had a experinece in buidling restfull Apis.
+
+I also had a experince on managing the data and some databases like Mysql, JDBC and also nosql databases. I also had a experience on Spring Jpa, hibernate, jdbc. I have a knowledge in some aws services like s3bucket, lambda, cloudfront like. Also generating the CI/CD pipeleines with tools like jenkins. As a full stack developer for Tiaa client I had a contribution of developing their  website updates. Where I implemented Microservices architecture with Spring Boot, Spring Eureka, and Spring Ribbon. I replaced legacy database Stored Procedures with Restful Microservices, utilized Java 8 features, and integrated Spring with Hibernate.
+
+At last My commitment to excellence and continuous learning always boots my dedication to deliver high quality software solutions.
